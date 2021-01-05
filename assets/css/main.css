@@ -1,0 +1,18 @@
+.navbar{
+  background-color: rgba(80, 80, 255, 0.767);
+  height: 75px;
+}
+
+
+.navbar-brand{
+  height: 60px;
+  width: 180px;
+  background-image: url(../imgs/logo.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+}
+
+.container{
+  padding-top: 2em;
+}

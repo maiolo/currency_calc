@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Calculadora FacilitaPay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="./assets/bootstrap/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-light">
+    <div class="navbar-brand"></div>
+    </nav>
+  <div class="container">
+    <div id="calc">
+      <div class="form">
+        <div class="input">
+          <input type ="number" id="entry" name="entry" v-model="input" @change="calculate" @keyup="calculate">
+          <select class ="currency" v-model="currency1" @change="calculate">
+            <option v-for="(currency, index) in currencies" :value='index'>{{ currency.initials }} </option>
+          </select>
+        </div>
+        <ul>
+          <li>valor</li>
+          <li v-for="tax in taxes">{{ tax.taxName }} = {{ tax.taxValue }}</li>
+        </ul>
+        <div class="output">
+          <input type ="number" id="result" name="result" :value='output' >
+          <select class ="currency" v-model="currency2" @change="calculate">
+            <option v-for="(currency, index) in currencies" :value='index'> {{currency.initials}} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- <div>Flag Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+
+  <script src="./assets/bootstrap/js/bootstrap.bundle.js"></script>
+  <!-- <script src="assets/scripts/jquery.min.js"></script> --> <!--Produção-->
+  <script src="assets/scripts/jquery.js"></script> <!--Desenvolvimento-->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
+  <script src="./assets/scripts/vue.js"></script> <!--Desenvolvimento-->
+  <!-- <script src="./assets/scripts/vue.min.js"></script> --> <!--Produção-->
+  <script src="./assets/scripts/main.js"></script>
+</body>
+</html>
