@@ -14,24 +14,29 @@
     <div class="navbar-brand"></div>
     </nav>
   <div class="container">
-    <div id="calc">
+
+    <div id="calc" class="col-6">
+
       <div class="form">
         <div class="input">
           <input type ="number" id="entry" name="entry" v-model="input" @change="calculate" @keyup="calculate">
-          <select class ="currency" v-model="currency1" @change="calculate">
+          <select id="currency1" v-model="currency1" @change="calculate" v-select2>
             <option v-for="(currency, index) in currencies" :value='index'>{{ currency.initials }} </option>
           </select>
         </div>
+
         <ul>
           <li>valor</li>
           <li v-for="tax in taxes">{{ tax.taxName }} = {{ tax.taxValue }}</li>
         </ul>
+
         <div class="output">
           <input type ="number" id="result" name="result" :value='output' >
-          <select class ="currency" v-model="currency2" @change="calculate">
+          <select id="currency2" v-model="currency2" @change="calculate" v-select2>
             <option v-for="(currency, index) in currencies" :value='index'> {{currency.initials}} </option>
           </select>
         </div>
+        
       </div>
     </div>
 
@@ -41,7 +46,7 @@
   <script src="./assets/bootstrap/js/bootstrap.bundle.js"></script>
   <!-- <script src="assets/scripts/jquery.min.js"></script> --> <!--Produção-->
   <script src="assets/scripts/jquery.js"></script> <!--Desenvolvimento-->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script src="./assets/scripts/vue.js"></script> <!--Desenvolvimento-->
   <!-- <script src="./assets/scripts/vue.min.js"></script> --> <!--Produção-->
   <script src="./assets/scripts/main.js"></script>

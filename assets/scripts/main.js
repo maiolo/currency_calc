@@ -1,6 +1,17 @@
-// $(document).ready(function() {
-//   $('.currency').select2();
-// });
+
+Vue.directive('select2', {
+  inserted(el) {
+      $(el).on('select2:select', () => {
+          const event = new Event('change', { bubbles: true, cancelable: true });
+          el.dispatchEvent(event);
+      });
+
+      $(el).on('select2:unselect', () => {
+          const event = new Event('change', {bubbles: true, cancelable: true})
+          el.dispatchEvent(event)
+      })
+  },
+});
 
 var calc = new Vue({
   el: '#calc',
@@ -18,26 +29,25 @@ var calc = new Vue({
 
     currencies: [
       {
-        flag: "../imgs/brazil.svg",
+        flag: "./assets/imgs/brazil.svg",
         initials: "BRL",
         name: "Real Brasileiro",
-        selected: "true"
       },
       {
-        flag: "../imgs/united-states.svg",
+        flag: "./assets/imgs/united-states.svg",
         initials: "USD",
         name: "Dólar Americano"
       },
       {
-        flag: "../imgs/european-union.svg",
+        flag: "./assets/imgs/european-union.svg",
         initials: "EUR",
         name: "Euro"
       }
     ],
     currency1: 0,
     currency2: 1,
-    input: 0,
-    output: 0
+    input: 0.00,
+    output: 0.00
   },
   methods: {
     selectValue(){
@@ -52,6 +62,7 @@ var calc = new Vue({
               case 0:
                 this.currency2 = 1
                 this.calculate()
+                $("#currency2").val(this.currency2).trigger("change.select2")
                 break;
               case 1:
                 {
@@ -59,7 +70,7 @@ var calc = new Vue({
                   this.output = this.output.toFixed(2)
                   break;
                 }
-              case 3:
+              case 2:
                 {
                   this.output = (this.input - ((this.taxes[0].taxValue / 100 * this.input) + (this.taxes[1].taxValue / 100 * this.input))) * 0.1563
                   this.output = this.output.toFixed(2)
@@ -80,6 +91,7 @@ var calc = new Vue({
               case 1:
                 this.currency2 = 0
                 this.calculate()
+                $("#currency2").val(this.currency2).trigger("change.select2")
                 break;
               case 2:
                 {
@@ -108,11 +120,40 @@ var calc = new Vue({
               case 2:
                 this.currency2 = 1
                 this.calculate()
+                $("#currency2").val(this.currency2).trigger("change.select2")
                 break;
             }
             break;
           }
       }
-    }
+    },
   }
 })
+
+// function newFunction() {
+//   $(document).ready(function () {
+//     $('.currency').select2();
+//   });
+// }
+
+function formatCurrency (currency) {
+  if (!currency.id) {
+    return currency.text;
+  }
+  var img = calc.currencies[currency.id].flag
+  var $currency = $(
+    '<span><img src="' + img + '" class="img-flag" /> ' + currency.text + '</span>'
+  );
+  return $currency;
+};
+
+$('#currency1').select2({
+  minimumResultsForSearch: Infinity,
+  templateResult: formatCurrency,
+  templateSelection: formatCurrency
+});
+$('#currency2').select2({
+  minimumResultsForSearch: Infinity,
+  templateResult: formatCurrency,
+  templateSelection: formatCurrency
+});
