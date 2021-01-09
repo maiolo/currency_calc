@@ -26,3 +26,20 @@
   width: fit-content;
 }
 
+.img-flag{
+  width: 25px;
+  margin-bottom: 5px;
+}
+
+.select2{
+  width: 50px;
+}
+
+.input-group>.form-control{
+width: 50%;
+}
+
+.input-group>.select2-container--bootstrap4 .select2-selection{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

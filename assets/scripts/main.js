@@ -148,11 +148,14 @@ function formatCurrency (currency) {
 };
 
 $('#currency1').select2({
+  theme: 'bootstrap4',
   minimumResultsForSearch: Infinity,
   templateResult: formatCurrency,
   templateSelection: formatCurrency
 });
 $('#currency2').select2({
+  theme: 'bootstrap4',
+  width: 'resolve',
   minimumResultsForSearch: Infinity,
   templateResult: formatCurrency,
   templateSelection: formatCurrency
