@@ -27,8 +27,8 @@
         </div>
 
         <ul>
-          <li>valor</li>
-          <li v-for="tax in taxes">{{ tax.taxName }} = {{ tax.taxValue }}</li>
+          <li> {{ currencies[currency1].name }} = {{currencies[currency1]["value_" + currencies[currency2].initials.toLowerCase()]}} </li>
+          <li v-for="tax in taxes">{{ tax.taxName }} = {{ tax.taxValue }}%</li>
         </ul>
 
         <div class="input-group">
@@ -42,7 +42,9 @@
     </div>
 
   </div>
-  <!-- <div>Flag Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+  <footer class="footer">
+    Flag Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+  </footer>
 
   <script src="./assets/bootstrap/js/bootstrap.bundle.js"></script>
   <!-- <script src="assets/scripts/jquery.min.js"></script> --> <!--Produção-->

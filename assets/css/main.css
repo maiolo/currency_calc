@@ -43,3 +43,7 @@ width: 50%;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+.footer {
+  margin-top: 37vh;
+}
