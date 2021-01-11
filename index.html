@@ -6,7 +6,7 @@
   <title>Calculadora FacilitaPay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css">
+  <link rel="stylesheet" href="./assets/css/select2-bootstrap4.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="./assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css">
 </head>
@@ -17,28 +17,7 @@
   <div class="container">
 
     <div id="calc" class="col-6">
-
-      <div class="form">
-        <div class="input-group">
-          <input class='form-control' type ="number" id="entry" name="entry" v-model="input" @change="calculate" @keyup="calculate">
-          <select class='form-control' style="width: 50px;" id="currency1" v-model="currency1" @change="calculate" v-select2>
-            <option v-for="(currency, index) in currencies" :value='index'>{{ currency.initials }} </option>
-          </select>
-        </div>
-
-        <ul>
-          <li> {{ currencies[currency1].name }} = {{currencies[currency1]["value_" + currencies[currency2].initials.toLowerCase()]}} </li>
-          <li v-for="tax in taxes">{{ tax.taxName }} = {{ tax.taxValue }}%</li>
-        </ul>
-
-        <div class="input-group">
-          <input class='form-control' type ="number" id="result" name="result" :value='output'>
-          <select class='form-select' id="currency2" v-model="currency2" @change="calculate" v-select2>
-            <option v-for="(currency, index) in currencies" :value='index'>{{ currency.initials }}</option>
-          </select>
-        </div>
-        
-      </div>
+        <calculator ref='calc'></calculator>
     </div>
 
   </div>
